@@ -14,7 +14,7 @@ import javax.inject.Singleton
 class AppModule(val application: Application) {
 
     @Provides
-    @Singleton
+    @AppScope
     fun retrofit() = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -25,8 +25,9 @@ class AppModule(val application: Application) {
     @Provides
     fun application() = application
 
-    @Singleton
+
     @Provides
+    @AppScope
     fun stackoverflowApi(retrofit: Retrofit) = retrofit.create(StackoverflowApi::class.java)
 
 }
