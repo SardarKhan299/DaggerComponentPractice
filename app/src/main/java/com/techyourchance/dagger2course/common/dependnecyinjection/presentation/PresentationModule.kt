@@ -1,7 +1,8 @@
-package com.techyourchance.dagger2course.common.dependnecyinjection
+package com.techyourchance.dagger2course.common.dependnecyinjection.presentation
 
 import android.view.LayoutInflater
 import androidx.fragment.app.FragmentManager
+import com.techyourchance.dagger2course.common.dependnecyinjection.activity.ActivityComponent
 import com.techyourchance.dagger2course.networking.StackoverflowApi
 import com.techyourchance.dagger2course.questions.FetchQuestionDetailsUseCase
 import com.techyourchance.dagger2course.questions.FetchQuestionsUseCase
@@ -11,22 +12,22 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class PresentationModule(private val activityCompositionRoot: ActivityCompositionRoot) {
+class PresentationModule(private val activityComponent: ActivityComponent) {
 
     @Provides
-    fun layoutInflater() = activityCompositionRoot.layoutInflater
+    fun layoutInflater() = activityComponent.layoutInflater()
 
     @Provides
-    fun fragmentManager() = activityCompositionRoot.fragmentManager
+    fun fragmentManager() = activityComponent.fragmentManager()
 
     @Provides
-    fun stackoverflowApi() = activityCompositionRoot.stackoverflowApi
+    fun stackoverflowApi() = activityComponent.stackoverflowApi()
 
     @Provides
-    fun activity() = activityCompositionRoot.activity
+    fun activity() = activityComponent.activity()
 
     @Provides
-    fun screensNavigator() = activityCompositionRoot.screensNavigator
+    fun screensNavigator() = activityComponent.screensNavigator()
 
     @Provides
     fun viewMvcFactory(layoutInflater: LayoutInflater) = ViewMvcFactory(layoutInflater)
