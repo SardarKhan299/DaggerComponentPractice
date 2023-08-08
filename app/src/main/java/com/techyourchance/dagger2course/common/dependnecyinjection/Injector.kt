@@ -10,7 +10,7 @@ import com.techyourchance.dagger2course.screens.questionslist.QuestionsListFragm
 import java.lang.reflect.Field
 import java.util.*
 
-class Injector(private val compositionRoot: PresentationCompositionRoot) {
+class Injector(private val component:PresentationComponent) {
 
     fun inject(client: Any) {
         for (field in getAllFields(client)) {
@@ -45,19 +45,19 @@ class Injector(private val compositionRoot: PresentationCompositionRoot) {
     private fun getServiceForClass(type: Class<*>): Any {
         when (type) {
             DialogsNavigator::class.java -> {
-                return compositionRoot.dialogsNavigator
+                return component.dialogsNavigator()
             }
             ScreensNavigator::class.java -> {
-                return compositionRoot.screensNavigator
+                return component.screensNavigator()
             }
             FetchQuestionsUseCase::class.java -> {
-                return compositionRoot.fetchQuestionsUseCase
+                return component.fetchQuestionsUseCase()
             }
             FetchQuestionDetailsUseCase::class.java -> {
-                return compositionRoot.fetchQuestionDetailsUseCase
+                return component.fetchQuestionDetailsUseCase()
             }
             ViewMvcFactory::class.java -> {
-                return compositionRoot.viewMvcFactory
+                return component.viewMvcFactory()
             }
             else -> {
                 throw Exception("unsupported service type: $type")
