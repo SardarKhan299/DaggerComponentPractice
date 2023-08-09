@@ -11,10 +11,11 @@ import com.techyourchance.dagger2course.screens.questiondetails.QuestionDetailsA
 import com.techyourchance.dagger2course.screens.questionslist.QuestionsListActivity
 import com.techyourchance.dagger2course.screens.questionslist.QuestionsListFragment
 import dagger.Component
+import dagger.Subcomponent
 
 // this component is depend on Activity Component.
 @PresentationScope
-@Component(dependencies = [ActivityComponent::class], modules = [PresentationModule::class])
+@Subcomponent(modules = [PresentationModule::class])
 interface PresentationComponent {
     fun inject(fragment: QuestionsListFragment)
     fun injectActivity(fragment: QuestionDetailsActivity)
