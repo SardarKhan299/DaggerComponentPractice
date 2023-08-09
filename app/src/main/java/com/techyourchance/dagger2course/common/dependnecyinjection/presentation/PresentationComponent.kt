@@ -1,5 +1,6 @@
 package com.techyourchance.dagger2course.common.dependnecyinjection.presentation
 
+import com.techyourchance.dagger2course.common.dependnecyinjection.activity.ActivityComponent
 import com.techyourchance.dagger2course.questions.FetchQuestionDetailsUseCase
 import com.techyourchance.dagger2course.questions.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.screens.common.ScreensNavigator
@@ -11,20 +12,10 @@ import com.techyourchance.dagger2course.screens.questionslist.QuestionsListActiv
 import com.techyourchance.dagger2course.screens.questionslist.QuestionsListFragment
 import dagger.Component
 
-@Component(modules = [PresentationModule::class])
+// this component is depend on Activity Component.
+@PresentationScope
+@Component(dependencies = [ActivityComponent::class], modules = [PresentationModule::class])
 interface PresentationComponent {
-
-//
-//    fun screensNavigator():ScreensNavigator
-//
-//    fun viewMvcFactory() : ViewMvcFactory
-//
-//    fun dialogsNavigator() : DialogsNavigator
-//
-//    fun fetchQuestionsUseCase() : FetchQuestionsUseCase
-//
-//    fun fetchQuestionDetailsUseCase() : FetchQuestionDetailsUseCase
-
     fun inject(fragment: QuestionsListFragment)
     fun injectActivity(fragment: QuestionDetailsActivity)
 }
