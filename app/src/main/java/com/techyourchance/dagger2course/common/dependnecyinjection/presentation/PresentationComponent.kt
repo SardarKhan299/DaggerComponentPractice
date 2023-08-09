@@ -15,7 +15,7 @@ import dagger.Subcomponent
 
 // this component is depend on Activity Component.
 @PresentationScope
-@Subcomponent(modules = [PresentationModule::class,UsecaseModule::class])
+@Subcomponent()
 interface PresentationComponent {
     fun inject(fragment: QuestionsListFragment)
     fun injectActivity(fragment: QuestionDetailsActivity)
