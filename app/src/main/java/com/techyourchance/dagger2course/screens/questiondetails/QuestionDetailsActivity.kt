@@ -26,7 +26,7 @@ class QuestionDetailsActivity : BaseActivity(), QuestionDetailsViewMvc.Listener 
     private lateinit var questionId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        injector.injectActivity(this)
+        injector.inject(this)
         super.onCreate(savedInstanceState)
         viewMvc = viewMvcFactory.newQuestionDetailsViewMvc(null)
         setContentView(viewMvc.rootView)

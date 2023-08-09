@@ -7,6 +7,7 @@ import com.techyourchance.dagger2course.screens.common.activities.BaseActivity
 class QuestionsListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        injector.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_frame)
 
