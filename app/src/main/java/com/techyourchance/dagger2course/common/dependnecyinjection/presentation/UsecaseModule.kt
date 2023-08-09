@@ -2,7 +2,6 @@ package com.techyourchance.dagger2course.common.dependnecyinjection.presentation
 
 import android.view.LayoutInflater
 import androidx.fragment.app.FragmentManager
-import com.techyourchance.dagger2course.common.dependnecyinjection.activity.ActivityComponent
 import com.techyourchance.dagger2course.networking.StackoverflowApi
 import com.techyourchance.dagger2course.questions.FetchQuestionDetailsUseCase
 import com.techyourchance.dagger2course.questions.FetchQuestionsUseCase
@@ -12,11 +11,9 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class PresentationModule() {
-
+class UsecaseModule {
     @Provides
-    fun viewMvcFactory(layoutInflater: LayoutInflater) = ViewMvcFactory(layoutInflater)
+    fun fetchQuestionsUseCase(stackoverflowApi: StackoverflowApi) = FetchQuestionsUseCase(stackoverflowApi)
     @Provides
-    fun dialogsNavigator(fragmentManager: FragmentManager) = DialogsNavigator(fragmentManager)
-
+    fun fetchQuestionDetailsUseCase(stackoverflowApi: StackoverflowApi) = FetchQuestionDetailsUseCase(stackoverflowApi)
 }
