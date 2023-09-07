@@ -5,13 +5,16 @@ import com.techyourchance.dagger2course.questions.FetchQuestionDetailsUseCase
 import com.techyourchance.dagger2course.questions.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.questions.Question
 import com.techyourchance.dagger2course.screens.common.viewmodels.SavedStateViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class MyViewModel @Inject constructor(
         private val fetchQuestionsUseCase: FetchQuestionsUseCase,
-        private val fetchQuestionDetailsUseCase: FetchQuestionDetailsUseCase
+        private val fetchQuestionDetailsUseCase: FetchQuestionDetailsUseCase,
+        private val savedStateHandle: SavedStateHandle
 ): SavedStateViewModel() {
 
     private lateinit var _questions: MutableLiveData<List<Question>>
